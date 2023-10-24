@@ -14,7 +14,7 @@ spec:
         kind: HelmRepository
         name: ingress-nginx
         namespace: flux-system
-      version: 4.7.1
+      version: 4.7.3
   values:
     controller:
       metrics:
@@ -51,5 +51,6 @@ spec:
     - name: aws-load-balancer-controller
     - name: kube-prometheus-stack
   install:
+    timeout: 3600s
     remediation:
-      retries: 3
+      retries: -1
