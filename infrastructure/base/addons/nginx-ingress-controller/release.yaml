@@ -51,6 +51,5 @@ spec:
     - name: aws-load-balancer-controller
     - name: kube-prometheus-stack
   install:
-    timeout: 3600s
     remediation:
-      retries: -1
+      retries: 6

@@ -1,8 +1,12 @@
 apiVersion: v1
 data:
   # AWS Load Balancer Controller configuration values - substitute with your resource ids
-  awsLoadBalancerControllerIamRoleArn: arn:aws:iam::784293101898:role/eksctl-my-eks-cluster-addon-iamserviceaccount-Role1-ZBoU3cea2DFL
+  awsLoadBalancerControllerIamRoleArn: arn:aws:iam::686604430769:role/eksctl-test-addon-iamserviceaccount-kube-syst-Role1-eNt4FkeqxJ03
   clusterName: my-eks-cluster
 kind: ConfigMap
 metadata:
   name: external-config-data
+
+
+
+flux bootstrap git --url=https://github.com/AdamDomagalsky/flux-eks-gitops-config.git --branch=flux-test --path=clusters/test --password=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

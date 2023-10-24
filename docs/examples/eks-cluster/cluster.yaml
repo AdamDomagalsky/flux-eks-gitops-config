@@ -3,7 +3,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: my-eks-cluster
+  name: test
   region: us-east-1
   version: "1.27"
 
@@ -22,10 +22,10 @@ iam:
       namespace: kube-system
     # Confirm that AWSLoadBalancerControllerIAMPolicy exists in your account. If it doesn't execute the following commands to create it:
     #     curl -o iam-policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.3.1/docs/install/iam_policy.json
-    #     aws iam create-policy --policy-name AWSLoadBalancerControllerIAMPolicy --policy-document file://iam-policy.json
+    #     aws iam create-policy --policy-name AWSLoadBalancerControllerIAMPolicy --policy-document file://iam_policy.json
     # Swap the Policy ARN below with your own AWS account
     # i.e. arn:aws:iam::(your_aws_account_number_here):policy/AWSLoadBalancerControllerIAMPolicy
     attachPolicyARNs:
-    - arn:aws:iam::784293101898:policy/AWSLoadBalancerControllerIAMPolicy
+    - arn:aws:iam::686604430769:policy/AWSLoadBalancerControllerIAMPolicy
     roleOnly: true
 
