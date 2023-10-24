@@ -3,14 +3,16 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: my-eks-cluster 
-  region: us-west-2
+  name: my-eks-cluster
+  region: us-east-1
   version: "1.27"
 
 managedNodeGroups:
-  - name: system-ng
-    instanceType: m6i.large
-    desiredCapacity: 2
+  - name: standard-workers-2
+    instanceType: t3.medium
+    desiredCapacity: 3
+    minSize: 1
+    maxSize: 3
 
 iam:
   withOIDC: true
@@ -24,6 +26,6 @@ iam:
     # Swap the Policy ARN below with your own AWS account
     # i.e. arn:aws:iam::(your_aws_account_number_here):policy/AWSLoadBalancerControllerIAMPolicy
     attachPolicyARNs:
-    - arn:aws:iam::012345678910:policy/AWSLoadBalancerControllerIAMPolicy
+    - arn:aws:iam::784293101898:policy/AWSLoadBalancerControllerIAMPolicy
     roleOnly: true
 
