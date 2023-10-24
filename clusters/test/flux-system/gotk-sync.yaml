@@ -11,7 +11,7 @@ spec:
     branch: flux-test
   secretRef:
     name: flux-system
-  url: ssh://AdamDomagalsky@github.com/AdamDomagalsky/flux-eks-gitops-config.git
+  url: ssh://git@github.com/AdamDomagalsky/flux-eks-gitops-config.git
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
