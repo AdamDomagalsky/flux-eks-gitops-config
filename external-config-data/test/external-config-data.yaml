@@ -1,8 +1,8 @@
 apiVersion: v1
 data:
   # AWS Load Balancer Controller configuration values - substitute with your resource ids
-  awsLoadBalancerControllerIamRoleArn: arn:aws:iam::686604430769:role/eksctl-test-addon-iamserviceaccount-kube-syst-Role1-eNt4FkeqxJ03
-  clusterName: my-eks-cluster
+  awsLoadBalancerControllerIamRoleArn: arn:aws:iam::264108652758:role/eksctl-test-addon-iamserviceaccount-kube-syst-Role1-CfOMbcTShi7N
+  clusterName: test
 kind: ConfigMap
 metadata:
   name: external-config-data
