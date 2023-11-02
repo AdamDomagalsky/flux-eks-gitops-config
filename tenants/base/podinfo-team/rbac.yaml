@@ -1,36 +1,62 @@
-# ---
-# apiVersion: v1
-# kind: Namespace
-# metadata:
-#   labels:
-#     toolkit.fluxcd.io/tenant: podinfo-team
-#   name: podinfo
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    toolkit.fluxcd.io/tenant: podinfo-team
+  name: podinfo
 
-# ---
-# apiVersion: v1
-# kind: ServiceAccount
-# metadata:
-#   labels:
-#     toolkit.fluxcd.io/tenant: podinfo-team
-#   name: podinfo-team
-#   namespace: podinfo
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    toolkit.fluxcd.io/tenant: podinfo-team
+  name: podinfo-team
+  namespace: podinfo
 
-# ---
-# apiVersion: rbac.authorization.k8s.io/v1
-# kind: RoleBinding
-# metadata:
-#   labels:
-#     toolkit.fluxcd.io/tenant: podinfo-team
-#   name: podinfo-team-reconciler
-#   namespace: podinfo
-# roleRef:
-#   apiGroup: rbac.authorization.k8s.io
-#   kind: ClusterRole
-#   name: cluster-admin
-# subjects:
-# - apiGroup: rbac.authorization.k8s.io
-#   kind: User
-#   name: gotk:podinfo:reconciler
-# - kind: ServiceAccount
-#   name: podinfo-team
-#   namespace: podinfo
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: podinfo
+  name: crd-admin
+rules:
+- apiGroups: ["apiextensions.k8s.io"] 
+  resources: ["customresourcedefinitions"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: crd-admin
+  namespace: podinfo
+subjects:
+- kind: ServiceAccount
+  name: podinfo-team
+  namespace: podinfo
+roleRef:
+  kind: Role 
+  name: crd-admin
+  apiGroup: rbac.authorization.k8s.io
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    toolkit.fluxcd.io/tenant: podinfo-team
+  name: podinfo-team-reconciler
+  namespace: podinfo
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: gotk:podinfo:reconciler
+- kind: ServiceAccount
+  name: podinfo-team
+  namespace: podinfo
