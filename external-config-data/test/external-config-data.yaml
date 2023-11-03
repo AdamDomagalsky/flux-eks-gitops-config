@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
   # AWS Load Balancer Controller configuration values - substitute with your resource ids
-  awsLoadBalancerControllerIamRoleArn: arn:aws:iam::418983744735:role/eksctl-test-addon-iamserviceaccount-kube-syst-Role1-ZDQwrl5Tzooz
+  awsLoadBalancerControllerIamRoleArn: arn:aws:iam::794576698651:role/elo-Role1-ASig6wWFZi4Y
   clusterName: test
 kind: ConfigMap
 metadata:
