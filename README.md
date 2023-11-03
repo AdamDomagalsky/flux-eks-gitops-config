@@ -76,7 +76,7 @@ You will also need the following:
     If you have followed the `eksctl` instructions, execute the following command to get the IAM Role ARN:
 
     ```bash
-    $ eksctl get iamserviceaccount  --cluster my-eks-cluster
+    $ eksctl get iamserviceaccount  --cluster test
     2022-05-23 15:44:46 [ℹ]  eksctl version 0.95.0
     2022-05-23 15:44:46 [ℹ]  using region us-west-2
     NAMESPACE       NAME                            ROLE ARN
