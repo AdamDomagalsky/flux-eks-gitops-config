@@ -24,4 +24,4 @@ spec:
     kind: GitRepository
     name: podinfo-team
   prune: true
-  validation: client
+  # validation: client
